@@ -1,0 +1,17 @@
+repos:
+-   repo: local
+    hooks:
+    - id: autoflake
+      name: autoflake
+      language: python
+      language_version: python3.7
+      types: [python]
+      additional_dependencies: ["autoflake"]
+      entry: bash -c 'autoflake --in-place --remove-unused-variables --imports=pandas,numpy,$(ls -d */ | tr -s "/\n" ",") "$@" ; git add -u; sleep 0.5' --
+
+-   repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+    - id: black
+      language_version: python3.7
+      entry: bash -c 'black "$@"; git add -u' --
