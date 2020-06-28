@@ -14,7 +14,12 @@ from sklearn import preprocessing
 import matplotlib.pyplot as plt
 from math import sqrt
 import seaborn as sns
+import pandas.core.algorithms as algos
+from pandas import Series
 import scipy.stats.stats as stats
+import re
+import traceback
+
 
 import logging
 
