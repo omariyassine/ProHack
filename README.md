@@ -19,3 +19,11 @@ To setup the environment and the dependencies:
     > pipenv install --dev
 
 The `--dev` flag is important to install the developement requirements
+
+## Linting
+
+We use [black](https://github.com/psf/black) as our default linter.
+
+To *automatically trigger* black before each commit, init [pre-commit](https://pre-commit.com/):
+
+    > pipenv run pre-commit install
