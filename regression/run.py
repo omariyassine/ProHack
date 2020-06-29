@@ -27,7 +27,7 @@ def evaluate_model():
 
 
 def deploy_model():
-    test = import_data()[1]
+    train, test = import_data()
     model = ExtraTreesRegressor()
     X_pred = preprocess(test, train)
     y_pred = model.predict(X_pred)
