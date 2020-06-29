@@ -37,6 +37,8 @@ reprint = "*"
 humanfriendly = "*"
 sklearn = "*"
 autoflake = "*"
+pylint = "*"
+xlrd = "*"
 
 [requires]
 python_version = "3.7"
