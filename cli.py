@@ -8,6 +8,7 @@ import logging
 from core.logging import init_logger
 from utils import log_title
 from regression.run import evaluate_model, deploy_model
+from optimization import get_optimal_ditrib
 
 init_logger()
 logger = logging.getLogger(__name__)
@@ -48,9 +49,11 @@ def run_regression(val: bool, deploy: bool) -> None:
         log_title("END DEPLOYMENT OF THE MODEL")
 
 
-def run_optimisation(debug: bool) -> None:
+@main.command()
+def run_optimisation() -> None:
     """Run Regression part
     """
+    get_optimal_ditrib()
 
 
 if __name__ == "__main__":
