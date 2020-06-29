@@ -6,11 +6,8 @@ import click
 import logging
 
 from core.logging import init_logger
-from utils import (
-    log_title,
-    drop_if_in_data,
-    concat_providers_data,
-)
+from utils import log_title
+from regression.run import evaluate_model, deploy_model
 
 init_logger()
 logger = logging.getLogger(__name__)
@@ -23,11 +20,32 @@ def main():
 
 @main.command()
 @click.option(
-    "--debug", help="Run scraper using browser graphical interface", is_flag=True,
+    "--val", help="Run evaluation, print and save scores", is_flag=True,
 )
-def run_regression(debug: bool) -> None:
+@click.option(
+    "--deploy", help="Deploy model ans save output", is_flag=True,
+)
+def run_regression(val: bool, deploy: bool) -> None:
     """Run Regression part
     """
+    if val:
+        log_title("START EVALUATION OF THE MODEL")
+        evaluate_model()
+        log_title("START EVALUATION OF THE MODEL")
+
+    elif deploy:
+        log_title("START DEPLOYMENT OF THE MODEL")
+        deploy_model()
+        log_title("END DEPLOYMENT OF THE MODEL")
+
+    else:
+        log_title("START EVALUATION OF THE MODEL")
+        evaluate_model()
+        log_title("END EVALUATION OF THE MODEL")
+
+        log_title("START DEPLOYMENT OF THE MODEL")
+        deploy_model()
+        log_title("END DEPLOYMENT OF THE MODEL")
 
 
 def run_optimisation(debug: bool) -> None:

@@ -1,3 +1,37 @@
+import pandas as pd
+import numpy as np
+from sklearn import preprocessing
+import logging
+
+from regression.utils import (
+    MAPPING_CONSTELLATIONS,
+    GENDER_COLS_COUPLES,
+    compute_info_value,
+)
+
+logger = logging.getLogger(__name__)
+
+
+def import_data():
+    """Import raw data
+
+    Returns:
+        pd.DataFrame, pd.DataFrame: Tables of train and test data
+        Name of imported variables:
+            - train (pd.DataFrame) : The table of train data
+            - test (pd.DataFrame) : The table of test data
+            - mapping_constellation (dict) : Mapping galaxy => constellation
+    """
+
+    BASE_PATH = "./data/input"
+    train = pd.read_csv(f"{BASE_PATH}/train.csv")
+    test = pd.read_csv(f"{BASE_PATH}/test.csv")
+    logger.info(
+        f"\nShape of train data {train.shape} \n" f"Shape of test data {test.shape}"
+    )
+    return train, test
+
+
 def clean_column_names(data):
     data.columns
     data.columns = [
@@ -117,7 +151,7 @@ def compute_dwarf_planet(data, train_data):
 
 
 def compute_constellation(data, train_data):
-    data["constellation"] = data["galaxy"].replace(mapping_constellation)
+    data["constellation"] = data["galaxy"].replace(MAPPING_CONSTELLATIONS)
     return data
 
 
@@ -177,8 +211,8 @@ def log_scale_data(data, train_data):
     return data
 
 
-def get_gender_ratio(data, train_data, gender_columns_couples=GENDER_COLS_COUPLES):
-    for (male, female) in gender_columns_couples:
+def get_gender_ratio(data, train_data):
+    for (male, female) in GENDER_COLS_COUPLES:
         new_col_name = female.replace("_female", "_gender_ration")
         data[new_col_name] = data[female] / data[male]
     return data

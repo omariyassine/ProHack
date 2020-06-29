@@ -6,6 +6,13 @@ All data preprocessing on data should be done here (filtering, NaN droping and f
     1. For each cleaning or preprocessing, create a function in `preprocessing.py`
     2.  Then add it to the prprocess function
 """
+import pandas as pd
+import logging
+
+from regression.preprocessing import *
+
+
+logger = logging.getLogger(__name__)
 
 
 def preprocess(X_test, X_train, y_train, target="y"):
