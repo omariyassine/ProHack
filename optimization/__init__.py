@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from scipy import optimize
 import logging
+import datetime
 
 from optimization.cost import cost_function
 from optimization.constraint import under_threshold, total_energy
@@ -46,10 +47,11 @@ def get_optimal_ditrib():
             },
             {"fun": total_energy, "type": "ineq"},
         ],
+        options={"disp": True},
     )
 
     opt_df["pred_opt"] = result["x"]
-    opt_df.head()
+    logger.info(opt_df.head())
 
     # Save final results
     final_df = opt_df[["index", "pred", "pred_opt"]]
