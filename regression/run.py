@@ -29,11 +29,14 @@ def evaluate_model():
 def deploy_model():
     train, test = import_data()
     model = ExtraTreesRegressor()
-    X_pred = preprocess(test, train)
+    X_train = preprocess(train, train.drop("y", axis=1), train["y"])[0]
+    X_pred = preprocess(test, train.drop("y", axis=1), train["y"])[0]
+    col_here = set(X_train.columns).intersection(X_pred.columns)
+    model.fit(X_train[col_here], train["y"])
     y_pred = model.predict(X_pred)
     time = str(datetime.now())
     now = time[:16].replace(" ", "_").replace("-", "_").replace(":", "h")
     filename = f"{BASE_PATH}/output/predictions"
     filename_time = f"{BASE_PATH}/output/history/predictions_{now}"
-    pd.Series(y_pred).to_csv(f"{filename}.csv")
-    pd.Series(y_pred).to_csv(f"{filename_time}.csv")
+    pd.DataFrame(y_pred).to_csv(f"{filename}.csv", index=False)
+    pd.DataFrame(y_pred).to_csv(f"{filename_time}.csv", index=False)
