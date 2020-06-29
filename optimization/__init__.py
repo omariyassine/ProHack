@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from scipy import optimize
 import logging
-import datetime
+from datetime import datetime
 
 from optimization.cost import cost_function
 from optimization.constraint import under_threshold, total_energy
