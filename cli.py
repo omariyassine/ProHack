@@ -21,23 +21,31 @@ def main():
 
 @main.command()
 @click.option(
-    "--val", help="Run evaluation, print and save scores", is_flag=True,
+    "--evaluation", help="Run evaluation, print and save scores", is_flag=True,
 )
 @click.option(
-    "--deploy", help="Deploy model ans save output", is_flag=True,
+    "--regression", help="Deploy model ans save output", is_flag=True,
 )
-def run_regression(val: bool, deploy: bool) -> None:
+@click.option(
+    "--optimisation", help="Deploy model ans save output", is_flag=True,
+)
+def solve_problem(evaluation: bool, regression: bool, optimisation: bool) -> None:
     """Run Regression part
     """
-    if val:
+    if evaluation:
         log_title("START EVALUATION OF THE MODEL")
         evaluate_model()
         log_title("START EVALUATION OF THE MODEL")
 
-    elif deploy:
+    elif regression:
         log_title("START DEPLOYMENT OF THE MODEL")
         deploy_model()
         log_title("END DEPLOYMENT OF THE MODEL")
+    
+    elif:
+        log_title("START OPTIMIZATION")
+        get_optimal_ditrib()
+        log_title("START OPTIMIZATION")
 
     else:
         log_title("START EVALUATION OF THE MODEL")
@@ -47,15 +55,12 @@ def run_regression(val: bool, deploy: bool) -> None:
         log_title("START DEPLOYMENT OF THE MODEL")
         deploy_model()
         log_title("END DEPLOYMENT OF THE MODEL")
+        
+        log_title("START OPTIMIZATION")
+        get_optimal_ditrib()
+        log_title("START OPTIMIZATION")
 
 
-@main.command()
-def run_optimisation() -> None:
-    """Run Regression part
-    """
-    log_title("START OPTIMIZATION")
-    get_optimal_ditrib()
-    log_title("START OPTIMIZATION")
 
 
 if __name__ == "__main__":
