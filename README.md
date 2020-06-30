@@ -28,6 +28,51 @@ pipenv install --dev
 
 The `--dev` flag is important to install the developement requirements
 
+
+## Command Line Instructions (CLI)
+
+### Activate the pipenv environment
+
+```bash
+pipenv shell
+```
+
+### Usage
+
+```bash
+python cli.py [command] --help
+```
+
+### Command Lines
+
+#### Generate providers proprietary data:
+
+* **Main command** 
+
+```bash
+python cli.py solve-problem
+```
+
+:warning: **Running this command will run the optimisation which takes time**
+
+* **Options**
+
+    ```bash
+    python cli.py solve-problem --regression
+    ```
+   Deploys the regeression model and save the output
+
+    ```bash
+    python cli.py solve-problem --optimisation
+    ```
+    Deploy the optimisation model and save the output
+
+    ```bash 
+    python cli.py solve-problem --evaluation
+    ```
+    Run the evaluation on the regression part
+
+
 ## Linting
 
 We use [black](https://github.com/psf/black) as our default linter.
