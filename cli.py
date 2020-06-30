@@ -41,8 +41,8 @@ def solve_problem(evaluation: bool, regression: bool, optimisation: bool) -> Non
         log_title("START DEPLOYMENT OF THE MODEL")
         deploy_model()
         log_title("END DEPLOYMENT OF THE MODEL")
-    
-    elif:
+
+    elif optimisation:
         log_title("START OPTIMIZATION")
         get_optimal_ditrib()
         log_title("START OPTIMIZATION")
@@ -55,12 +55,10 @@ def solve_problem(evaluation: bool, regression: bool, optimisation: bool) -> Non
         log_title("START DEPLOYMENT OF THE MODEL")
         deploy_model()
         log_title("END DEPLOYMENT OF THE MODEL")
-        
+
         log_title("START OPTIMIZATION")
         get_optimal_ditrib()
         log_title("START OPTIMIZATION")
-
-
 
 
 if __name__ == "__main__":
