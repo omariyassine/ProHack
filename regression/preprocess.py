@@ -18,13 +18,13 @@ logger = logging.getLogger(__name__)
 def preprocess(X_test, X_train, y_train, target="y"):
     """This method will be deployed on data to do the preprocesing
 
-   Args:
-    data (pd.DataFrame): The data on which the preprocessing is applied
-    train_data (pd.DataFrame): The train data used to train encoders
+     Args:
+      data (pd.DataFrame): The data on which the preprocessing is applied
+      train_data (pd.DataFrame): The train data used to train encoders
 
-  Returns:
-    pd.DataFrame: The preprocessed data
-  """
+    Returns:
+      pd.DataFrame: The preprocessed data
+    """
     data = X_test.copy()
     train_data = pd.concat([X_train, y_train], axis=1)
     data, train_data = clean_column_names(data), clean_column_names(train_data)

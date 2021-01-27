@@ -21,17 +21,22 @@ def main():
 
 @main.command()
 @click.option(
-    "--evaluation", help="Run evaluation, print and save scores", is_flag=True,
+    "--evaluation",
+    help="Run evaluation, print and save scores",
+    is_flag=True,
 )
 @click.option(
-    "--regression", help="Deploy model ans save output", is_flag=True,
+    "--regression",
+    help="Deploy model ans save output",
+    is_flag=True,
 )
 @click.option(
-    "--optimisation", help="Deploy model ans save output", is_flag=True,
+    "--optimisation",
+    help="Deploy model ans save output",
+    is_flag=True,
 )
 def solve_problem(evaluation: bool, regression: bool, optimisation: bool) -> None:
-    """Run Regression part
-    """
+    """Run Regression part"""
     if evaluation:
         log_title("START EVALUATION OF THE MODEL")
         evaluate_model()

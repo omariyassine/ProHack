@@ -95,7 +95,12 @@ class ColouredFormatter(logging.Formatter):
     RESET_SEQUENCE = "\x1b[0m"
 
     def __init__(
-        self, fmt=None, datefmt=None, style="%", log_colors=None, reset=True,
+        self,
+        fmt=None,
+        datefmt=None,
+        style="%",
+        log_colors=None,
+        reset=True,
     ):
         super().__init__(fmt, datefmt, style)
         self.log_colors = self.DEFAULT_COLORS

@@ -60,13 +60,15 @@ def concat_data_by_path(*paths):
 
 
 def _find_element_click(
-    driver, by, expression,
+    driver,
+    by,
+    expression,
 ):
     """Find the element and click then  handle all type of exception during click
 
     Args:
         driver (selenium.driver): Selenium driver
-        by (selenium.webdriver.common.by): Type of selector 
+        by (selenium.webdriver.common.by): Type of selector
             (By.XPATH, By.CSSSelector ...)
         expression (str): Selector expression to the element to click on
 

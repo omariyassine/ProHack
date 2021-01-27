@@ -17,8 +17,8 @@ logger = logging.getLogger(__file__)
 def import_regression_result():
     """Create optimization dataframe
 
-        - Create `opt_df` a dataframe from the prediction
-        - Create the column `potential_increase` in `opt_df` using the formula `-np.log(Index+0.01)+3`
+    - Create `opt_df` a dataframe from the prediction
+    - Create the column `potential_increase` in `opt_df` using the formula `-np.log(Index+0.01)+3`
     """
     y_pred = pd.read_csv("data/output/predictions.csv")["0"].values
     test = pd.read_csv("data/input/test.csv")
