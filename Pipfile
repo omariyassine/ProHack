@@ -30,7 +30,6 @@ textblob = "*"
 vadersentiment = "*"
 timeout-decorator = "*"
 tqdm = "*"
-qrawler = {editable = true,git = "ssh://git@github.com/QantEv/qrawler.git"}
 rake-nltk = "*"
 reprint = "*"
 humanfriendly = "*"
